@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { AppBar, Container, Grid, Grow, Typography } from "@material-ui/core";
 import Posts from "./components/Posts/Posts";
 import Form from "./components/Form/Form";
@@ -8,7 +8,6 @@ import { useDispatch } from "react-redux";
 import { getPosts } from "./actions/PostsActions";
 
 function App() {
-	const [currentId, setCurrentId] = useState();
 	const classes = useStyles();
 	const dispatch = useDispatch();
 
