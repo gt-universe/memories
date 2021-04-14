@@ -7,6 +7,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { CURRENT_POST_ACTION } from "../../../reducers/PostsReducer";
+import { updatePost, deletePostAction } from "../../../actions/PostsActions";
 
 function Post(props) {
 	const classes = useStyles();
@@ -15,6 +16,16 @@ function Post(props) {
 
 	const editPost = () => {
 		dispatch({ type: CURRENT_POST_ACTION.update, payload: post });
+	};
+
+	const updateLike = () => {
+		let likePayload = JSON.parse(JSON.stringify(post));
+		likePayload.likeCount += 1;
+		dispatch(updatePost(likePayload));
+	};
+
+	const deletePost = () => {
+		dispatch(deletePostAction(post._id));
 	};
 
 	return (
@@ -43,10 +54,10 @@ function Post(props) {
 				</Typography>
 			</CardContent>
 			<CardActions className={classes.cardActions}>
-				<Button size="small" color="primary" onClick={() => {}}>
+				<Button size="small" color="primary" onClick={updateLike}>
 					<ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}{" "}
 				</Button>
-				<Button size="small" color="primary" onClick={() => {}}>
+				<Button size="small" color="primary" onClick={deletePost}>
 					<DeleteIcon fontSize="small" /> Delete
 				</Button>
 			</CardActions>

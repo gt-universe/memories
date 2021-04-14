@@ -11,3 +11,6 @@ client/build
 
 #Random
 *.DS_store
+
+#vscode
+.vscode

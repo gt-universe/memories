@@ -20,6 +20,11 @@ export const createPost = (post) => async (dispatch) => {
 	}
 };
 
+/**
+ * API calls and dispatch w
+ * @param {*} updatedPost
+ * @returns
+ */
 export const updatePost = (updatedPost) => async (dispatch) => {
 	try {
 		const updatedPostPayload = await api.updatePost(updatedPost);
@@ -30,9 +35,9 @@ export const updatePost = (updatedPost) => async (dispatch) => {
 	}
 };
 
-export const deletePost = (id) => async (dispatch) => {
+export const deletePostAction = (id) => async (dispatch) => {
 	try {
-		const response = api.deletePost(id);
+		await api.deletePost(id);
 		dispatch({ type: POST_ACTIONS.delete, payload: { id } });
 	} catch (error) {
 		console.log("🚀 ~ file: PostsActions.js ~ line 37 ~ deletePost ~ error", error);

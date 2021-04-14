@@ -13,6 +13,7 @@ app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use("/post", PostRoutes);
 
 const CONNECTION_URL = `mongodb+srv://hello:hello@cluster0.ot9ne.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+//const CONNECTION_URL = `mongodb://10.5.28.35:27017/web`;
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(CONNECTION_URL, {

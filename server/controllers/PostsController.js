@@ -1,6 +1,7 @@
 import PostMessage from "../models/PostsMessage.js";
 import { errorLogger } from "../src/core/LoggerUtils.js";
 import { REST_STATUS } from "../src/core/RestStatus.js";
+import mongoose from "mongoose";
 
 export const getPosts = async (req, response) => {
 	try {
@@ -28,6 +29,7 @@ export const updatePost = async (request, response) => {
 	try {
 		const { id: _id } = request.params;
 		const postPayload = request.body;
+		if (!isValidId(_id)) throw Error("Invalid post ID");
 		const updatedPost = await PostMessage.findByIdAndUpdate(_id, postPayload, {
 			new: true,
 		});
@@ -35,6 +37,18 @@ export const updatePost = async (request, response) => {
 		response.status(REST_STATUS.SUCCESSFULLY_UPDATED).json(updatedPost);
 	} catch (error) {
 		console.log("🚀 ~ file: PostsController.js ~ line 30 ~ updatePost ~ error", error);
-		response.status(401).json({ message: "Failed to update", reason: error.message });
+		response.status(400).json({ message: "Failed to update", reason: error.message });
 	}
 };
+
+export const deletePost = async (request, response) => {
+	try {
+		const { id: _id } = request.params;
+		await PostMessage.findByIdAndRemove(_id);
+		response.status(REST_STATUS.SUCCESSFULLY_DELETED).json({ message: "Successfully deleted the post" });
+	} catch (error) {
+		console.log("🚀 ~ file: PostsController.js ~ line 49 ~ deletePost ~ error", error);
+	}
+};
+
+const isValidId = (id) => mongoose.Types.ObjectId.isValid(id);
