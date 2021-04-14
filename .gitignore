@@ -1,0 +1,13 @@
+
+#node modules
+*node_modules
+ 
+# lock files
+package-lock.json
+yarn.lock
+
+#build
+client/build
+
+#Random
+*.DS_store
