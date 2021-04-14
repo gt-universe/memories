@@ -2,6 +2,7 @@ export const POST_ACTIONS = {
 	fetch: "FETCH_ALL",
 	create: "CREATE_NEW_POST",
 	update: "UPDATE_POST",
+	delete: "DELETE_POST",
 };
 
 const POSTS_REDUCER = (posts = [], action) => {

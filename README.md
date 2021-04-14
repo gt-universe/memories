@@ -1,13 +1,13 @@
 # Memories
 
-  A MERN stack application with blog posts
+A MERN stack application with blog posts
 
+Tech Used
 
-Tech Used 
-- Node
-- Express
-- Mongoose
-- HTML/CSS
-- Material UI
-- ReactJS
-- Mongo Atlas - For cloud hosting of MONGO
+-    Node
+-    Express
+-    Mongoose
+-    HTML/CSS
+-    Material UI
+-    ReactJS
+-    Mongo Atlas - For cloud hosting of MONGO

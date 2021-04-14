@@ -29,3 +29,12 @@ export const updatePost = (updatedPost) => async (dispatch) => {
 		console.log("🚀 ~ file: PostsActions.js ~ line 27 ~ updatePost ~ error", error);
 	}
 };
+
+export const deletePost = (id) => async (dispatch) => {
+	try {
+		const response = api.deletePost(id);
+		dispatch({ type: POST_ACTIONS.delete, payload: { id } });
+	} catch (error) {
+		console.log("🚀 ~ file: PostsActions.js ~ line 37 ~ deletePost ~ error", error);
+	}
+};
