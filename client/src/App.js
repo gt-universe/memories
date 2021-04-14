@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { AppBar, Container, Grid, Grow, Typography } from "@material-ui/core";
-import Posts from "./components/Posts/Posts";
+import Posts from "./components/Posts/PostsComponent";
 import Form from "./components/Form/Form";
 import useStyles from "./styles";
 import memories from "./images/memories.png";
